@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menus>
+<menu role="teacher" rolecode="012">
+    <item>
+        <spec>msg</spec>
+        <title>消息</title>
+        <icon>drawable/msg</icon>
+        <picon>drawable/msg_pressed</picon>
+        <intent>com.ebooo.ui.XiaoxiFragment</intent>
+    </item>  
+    <item>
+        <spec>contact</spec>
+        <title>通讯录</title>
+        <icon>drawable/contact</icon>
+        <picon>drawable/contact_pressed</picon>
+        <intent>com.ebooo.ui.TongxunluFragment</intent>
+    </item>  
+    <item>
+        <spec>evaluate</spec>
+        <title>点评</title>
+        <icon>drawable/evaluate</icon>
+        <picon>drawable/evaluate_pressed</picon>
+        <intent>com.ebooo.ui.DianpingFragment</intent>
+    </item>  
+    <item>
+        <spec>homework</spec>
+        <title>作业</title>
+        <icon>drawable/u21_original</icon>
+        <picon>drawable/u21_hover</picon>
+        <intent>com.ebooo.ui.ZuoyeFragment</intent>
+    </item>  
+</menu>
+
+<menu role="parent"  rolecode="010">
+    <item>
+        <spec>msg</spec>
+        <title>消息</title>
+        <icon>drawable/msg</icon>
+        <picon>drawable/msg_pressed</picon>
+        <intent>com.zinchint.edu.ui.MsgListActivity</intent>
+    </item>  
+    <item>
+        <spec>contact</spec>
+        <title>通讯录</title>
+        <icon>drawable/contact</icon>
+        <picon>drawable/contact_pressed</picon>
+        <intent>com.zinchint.edu.ui.ContactListActivity</intent>
+    </item>  
+    <item>
+        <spec>evaluate</spec>
+        <title>点评</title>
+        <icon>drawable/evaluate</icon>
+        <picon>drawable/evaluate_pressed</picon>
+        <intent>com.zinchint.edu.ui.EvaluateBadgeForParentActivity</intent>
+    </item>  
+    <item>
+        <spec>homework</spec>
+        <title>作业</title>
+        <icon>drawable/u21_original</icon>
+        <picon>drawable/u21_hover</picon>
+        <intent>com.zinchint.edu.ui.ZuoyeListActivity</intent>
+    </item>  
+
+</menu>
+</menus>

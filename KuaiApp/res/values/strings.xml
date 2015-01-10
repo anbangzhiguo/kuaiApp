@@ -1,0 +1,14 @@
+<resources>
+
+    <item name="menu_fragment_id" type="id"></item>
+    <item name="menu_fragment_class" type="id"></item>
+    <item name="menu_fragment_icon" type="id"></item>
+    <item name="menu_fragment_picon" type="id"></item>
+    <item name="menu_fragment_title" type="id"></item>
+
+    <string name="app_name">学派</string>
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
+    <string name="mTitle">baike</string>
+
+</resources>
