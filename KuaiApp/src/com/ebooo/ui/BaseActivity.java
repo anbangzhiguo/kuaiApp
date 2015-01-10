@@ -6,7 +6,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.IBinder;
 import android.support.v7.app.ActionBarActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.Toast;
 
 abstract public class BaseActivity extends ActionBarActivity{
 	private final long stamp = (new Date()).getTime();
@@ -69,5 +75,53 @@ abstract public class BaseActivity extends ActionBarActivity{
 
 	protected void onRecieveBroadCast(String action, HashMap result) {
 		return;
+	}
+	
+	@Override
+	public boolean dispatchTouchEvent(MotionEvent ev) {
+		if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+
+			View v = getCurrentFocus();
+
+			if (isShouldHideInput(v, ev)) {
+				hideSoftInput(v.getWindowToken());
+				v.clearFocus();
+			}
+		}
+		return super.dispatchTouchEvent(ev);
+	}
+
+	private boolean isShouldHideInput(View v, MotionEvent event) {
+		if (v != null && (v instanceof EditText)) {
+			int[] l = { 0, 0 };
+			v.getLocationInWindow(l);
+			int left = l[0], top = l[1], bottom = top + v.getHeight(), right = left + v.getWidth();
+			if (event.getX() > left && event.getX() < right && event.getY() > top && event.getY() < bottom) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * @param token the token
+	 */
+	private void hideSoftInput(IBinder token) {
+		if (token != null) {
+			InputMethodManager im = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+			im.hideSoftInputFromWindow(token, InputMethodManager.HIDE_NOT_ALWAYS);
+		}
+	}
+
+	/**
+	 * Show toast.
+	 * 
+	 * @param content the content
+	 */
+	protected void showToast(String content) {
+		Toast.makeText(this, content, Toast.LENGTH_SHORT).show();
+
 	}
 }
