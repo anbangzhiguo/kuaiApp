@@ -27,17 +27,10 @@ public abstract class BaseFragmentActivity extends ActionBarActivity {
 	}
 
 
-	protected String getClassName() {
-		return this.getClass().getName();
-
-	}
-
-
 	@Override
 	public boolean dispatchTouchEvent(MotionEvent ev) {
 		if (ev.getAction() == MotionEvent.ACTION_DOWN) {
 
-			// ��õ�ǰ�õ������View��һ������¾���EditText������������ǹ켣�����ʵ�尸�����ƶ����㣩
 			View v = getCurrentFocus();
 
 			if (isShouldHideInput(v, ev)) {
@@ -49,7 +42,6 @@ public abstract class BaseFragmentActivity extends ActionBarActivity {
 	}
 
 	/**
-	 * ���EditText���������û�����������Աȣ����ж��Ƿ����ؼ��̣���Ϊ���û����EditTextʱû��Ҫ����.
 	 * 
 	 * @param v  the v
 	 * @param event the event
@@ -61,19 +53,15 @@ public abstract class BaseFragmentActivity extends ActionBarActivity {
 			v.getLocationInWindow(l);
 			int left = l[0], top = l[1], bottom = top + v.getHeight(), right = left + v.getWidth();
 			if (event.getX() > left && event.getX() < right && event.getY() > top && event.getY() < bottom) {
-				// ���EditText���¼���������
 				return false;
 			} else {
 				return true;
 			}
 		}
-		// ���㲻��EditText����ԣ������������ͼ�ջ����꣬��һ�����㲻��EditView�ϣ����û��ù켣��ѡ������Ľ���
 		return false;
 	}
 
 	/**
-	 * ���������.
-	 * 
 	 * @param token the token
 	 */
 	private void hideSoftInput(IBinder token) {

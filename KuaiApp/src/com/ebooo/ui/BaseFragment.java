@@ -37,8 +37,8 @@ abstract public class BaseFragment extends Fragment{
 		intent.putExtra("params", params);
 		intent.putExtra("stamp", stamp);
 		this.getActivity().startService(intent);
-
 	}
+	
 	protected abstract void onExcutedCommand(String commandId, HashMap rtnExtra);
 	
 	protected void regisistBroadcast(String action) {
