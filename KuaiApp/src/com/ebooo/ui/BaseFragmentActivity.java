@@ -14,7 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public abstract class BaseActivity extends ActionBarActivity {
+public abstract class BaseFragmentActivity extends ActionBarActivity {
 	public static final String CONNECTIVITY_CHANGE_ACTION = "android.net.conn.CONNECTIVITY_CHANGE";
 	private final String TAG = this.getClass().getName();
 	public Map<String, Fragment> fragmentMap = new HashMap<String, Fragment>();
@@ -37,7 +37,7 @@ public abstract class BaseActivity extends ActionBarActivity {
 	public boolean dispatchTouchEvent(MotionEvent ev) {
 		if (ev.getAction() == MotionEvent.ACTION_DOWN) {
 
-			// »ñµÃµ±Ç°µÃµ½½¹µãµÄView£¬Ò»°ãÇé¿öÏÂ¾ÍÊÇEditText£¨ÌØÊâÇé¿ö¾ÍÊÇ¹ì¼£Çó»òÕßÊµÌå°¸¼þ»áÒÆ¶¯½¹µã£©
+			// ï¿½ï¿½Ãµï¿½Ç°ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Viewï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¾ï¿½ï¿½ï¿½EditTextï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¹ì¼£ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½å°¸ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ã£©
 			View v = getCurrentFocus();
 
 			if (isShouldHideInput(v, ev)) {
@@ -49,7 +49,7 @@ public abstract class BaseActivity extends ActionBarActivity {
 	}
 
 	/**
-	 * ¸ù¾ÝEditTextËùÔÚ×ø±êºÍÓÃ»§µã»÷µÄ×ø±êÏà¶Ô±È£¬À´ÅÐ¶ÏÊÇ·ñÒþ²Ø¼üÅÌ£¬ÒòÎªµ±ÓÃ»§µã»÷EditTextÊ±Ã»±ØÒªÒþ²Ø.
+	 * ï¿½ï¿½ï¿½EditTextï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±È£ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½Ì£ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½EditTextÊ±Ã»ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½.
 	 * 
 	 * @param v  the v
 	 * @param event the event
@@ -61,18 +61,18 @@ public abstract class BaseActivity extends ActionBarActivity {
 			v.getLocationInWindow(l);
 			int left = l[0], top = l[1], bottom = top + v.getHeight(), right = left + v.getWidth();
 			if (event.getX() > left && event.getX() < right && event.getY() > top && event.getY() < bottom) {
-				// µã»÷EditTextµÄÊÂ¼þ£¬ºöÂÔËü¡£
+				// ï¿½ï¿½ï¿½EditTextï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				return false;
 			} else {
 				return true;
 			}
 		}
-		// Èç¹û½¹µã²»ÊÇEditTextÔòºöÂÔ£¬Õâ¸ö·¢ÉúÔÚÊÓÍ¼¸Õ»æÖÆÍê£¬µÚÒ»¸ö½¹µã²»ÔÚEditViewÉÏ£¬ºÍÓÃ»§ÓÃ¹ì¼£ÇòÑ¡ÔñÆäËûµÄ½¹µã
+		// ï¿½ï¿½ï¿½ã²»ï¿½ï¿½EditTextï¿½ï¿½ï¿½ï¿½Ô£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ê£¬ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ã²»ï¿½ï¿½EditViewï¿½Ï£ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ã¹ì¼£ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä½ï¿½ï¿½ï¿½
 		return false;
 	}
 
 	/**
-	 * Òþ²ØÈí¼üÅÌ.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 	 * 
 	 * @param token the token
 	 */

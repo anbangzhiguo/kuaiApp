@@ -30,7 +30,7 @@ import butterknife.OnClick;
 
 import com.ebooo.R;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseFragmentActivity {
 	private ActionBarDrawerToggle mDrawerToggle;
 	@InjectView(R.id.drawer_layout) DrawerLayout mDrawerLayout;
 	@InjectView(R.id.left_drawer) LinearLayout mDrawerList;
@@ -78,13 +78,11 @@ public class MainActivity extends BaseActivity {
 			public void onDrawerClosed(View view) {
 				super.onDrawerClosed(view);
 				getSupportActionBar().setTitle(eTitle);
-				invalidateOptionsMenu();
 			}
 
 			public void onDrawerOpened(View drawerView) {
 				super.onDrawerOpened(drawerView);
-				getSupportActionBar().setTitle(getTitle());
-				invalidateOptionsMenu();
+				getSupportActionBar().setTitle("设置");
 			}
 		};
 		

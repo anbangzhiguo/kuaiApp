@@ -45,15 +45,15 @@ abstract public class BaseFragment extends Fragment{
 		if (dataReceiver == null) {
 			dataReceiver = new DataReceiver();
 		}
-		IntentFilter filter = new IntentFilter();// ´´½¨IntentFilter¶ÔÏó
+		IntentFilter filter = new IntentFilter();// ï¿½ï¿½ï¿½ï¿½IntentFilterï¿½ï¿½ï¿½ï¿½
 		filter.addAction(action);
-		this.getActivity().registerReceiver(dataReceiver, filter);// ×¢²áBroadcast Receiver
+		this.getActivity().registerReceiver(dataReceiver, filter);// ×¢ï¿½ï¿½Broadcast Receiver
 
 	}
 	
 	protected class DataReceiver extends BroadcastReceiver {
 		@Override
-		public void onReceive(Context context, Intent intent) {// ÖØÐ´onReceive·½·¨
+		public void onReceive(Context context, Intent intent) {// ï¿½ï¿½Ð´onReceiveï¿½ï¿½ï¿½ï¿½
 			String a = className + String.valueOf(stamp);
 			if (intent.getAction().equals(a)) {
 				String cmdId = intent.getStringExtra("cmdId");
@@ -71,8 +71,8 @@ abstract public class BaseFragment extends Fragment{
 		return;
 	}
 	
-	protected BaseActivity getBaseActivity(){
-		return (BaseActivity)this.getActivity();
+	protected BaseFragmentActivity getBaseActivity(){
+		return (BaseFragmentActivity)this.getActivity();
 	}
 
 }
