@@ -1,19 +1,13 @@
 package com.ebooo.ui;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.xmlpull.v1.XmlPullParser;
-
 import android.content.res.Configuration;
 import android.content.res.XmlResourceParser;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -26,7 +20,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import butterknife.OnClick;
 
 import com.ebooo.R;
 
@@ -46,6 +39,7 @@ public class MainActivity extends BaseFragmentActivity {
 		menuChange(main_menu.getChildAt(0));
 	}
 	
+	@SuppressWarnings("unchecked")
 	private void initViews(){
 		LayoutInflater from = LayoutInflater.from(this);
 		ArrayList<HashMap<String, String>> menus = (ArrayList<HashMap<String, String>>)getMenus().get(0).get("items");
@@ -89,6 +83,7 @@ public class MainActivity extends BaseFragmentActivity {
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public void menuChange(View view) {
 		setTitle(view.getTag(R.id.menu_fragment_title).toString());
 		clearSelection();
@@ -139,6 +134,7 @@ public class MainActivity extends BaseFragmentActivity {
 		getSupportActionBar().setTitle(title);
 	}
 	
+	@SuppressWarnings("rawtypes")
 	private void hideFragments(FragmentTransaction transaction) {
 		List<Fragment> fragments = fragmentManager.getFragments();
 		if(fragments==null)return;
@@ -174,6 +170,7 @@ public class MainActivity extends BaseFragmentActivity {
 	}
 
 	
+	@SuppressWarnings("unchecked")
 	public List<HashMap<String, Object>> getMenus(){
 		XmlResourceParser xrp = getResources().getXml(R.xml.menu);
 		List<HashMap<String, Object>> menuList = null;
@@ -221,7 +218,6 @@ public class MainActivity extends BaseFragmentActivity {
 				event = xrp.next();
 			}
 		} catch (Exception e) {
-			System.out.println(e);
 			e.printStackTrace();
 		}
 		return menuList;

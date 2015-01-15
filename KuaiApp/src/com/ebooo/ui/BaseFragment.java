@@ -7,7 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.v4.app.Fragment;
-
+@SuppressWarnings("rawtypes")
 abstract public class BaseFragment extends Fragment{
 	private final long stamp = (new Date()).getTime();
 	private final String className = this.getClass().getName();
@@ -39,21 +39,22 @@ abstract public class BaseFragment extends Fragment{
 		this.getActivity().startService(intent);
 	}
 	
+	
 	protected abstract void onExcutedCommand(String commandId, HashMap rtnExtra);
 	
 	protected void regisistBroadcast(String action) {
 		if (dataReceiver == null) {
 			dataReceiver = new DataReceiver();
 		}
-		IntentFilter filter = new IntentFilter();// ����IntentFilter����
+		IntentFilter filter = new IntentFilter();
 		filter.addAction(action);
-		this.getActivity().registerReceiver(dataReceiver, filter);// ע��Broadcast Receiver
+		this.getActivity().registerReceiver(dataReceiver, filter);
 
 	}
 	
 	protected class DataReceiver extends BroadcastReceiver {
 		@Override
-		public void onReceive(Context context, Intent intent) {// ��дonReceive����
+		public void onReceive(Context context, Intent intent) {
 			String a = className + String.valueOf(stamp);
 			if (intent.getAction().equals(a)) {
 				String cmdId = intent.getStringExtra("cmdId");

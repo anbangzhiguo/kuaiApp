@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
-
+@SuppressWarnings("rawtypes")
 abstract public class BaseActivity extends ActionBarActivity{
 	private final long stamp = (new Date()).getTime();
 	private final String className = this.getClass().getName();
@@ -39,15 +39,15 @@ abstract public class BaseActivity extends ActionBarActivity{
 		if (dataReceiver == null) {
 			dataReceiver = new DataReceiver();
 		}
-		IntentFilter filter = new IntentFilter();// ����IntentFilter����
+		IntentFilter filter = new IntentFilter();
 		filter.addAction(action);
-		this.registerReceiver(dataReceiver, filter);// ע��Broadcast Receiver
+		this.registerReceiver(dataReceiver, filter);
 
 	}
 	
 	protected class DataReceiver extends BroadcastReceiver {
 		@Override
-		public void onReceive(Context context, Intent intent) {// ��дonReceive����
+		public void onReceive(Context context, Intent intent) {
 			String a = className + String.valueOf(stamp);
 			if (intent.getAction().equals(a)) {
 				String cmdId = intent.getStringExtra("cmdId");
@@ -80,9 +80,7 @@ abstract public class BaseActivity extends ActionBarActivity{
 	@Override
 	public boolean dispatchTouchEvent(MotionEvent ev) {
 		if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-
 			View v = getCurrentFocus();
-
 			if (isShouldHideInput(v, ev)) {
 				hideSoftInput(v.getWindowToken());
 				v.clearFocus();
@@ -122,6 +120,5 @@ abstract public class BaseActivity extends ActionBarActivity{
 	 */
 	protected void showToast(String content) {
 		Toast.makeText(this, content, Toast.LENGTH_SHORT).show();
-
 	}
 }

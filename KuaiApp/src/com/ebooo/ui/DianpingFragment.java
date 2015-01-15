@@ -1,14 +1,13 @@
 package com.ebooo.ui;
 
-import com.ebooo.R;
-import com.ebooo.R.layout;
-
-import butterknife.ButterKnife;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import butterknife.ButterKnife;
+
+import com.ebooo.R;
 
 public class DianpingFragment extends Fragment{
 	View dianpingView;

@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 public abstract class BaseFragmentActivity extends ActionBarActivity {
 	public static final String CONNECTIVITY_CHANGE_ACTION = "android.net.conn.CONNECTIVITY_CHANGE";
-	private final String TAG = this.getClass().getName();
 	public Map<String, Fragment> fragmentMap = new HashMap<String, Fragment>();
 	public FragmentManager fragmentManager;
 	public CharSequence eTitle;
